@@ -1,0 +1,112 @@
+Reza,Supervised by,Saraee
+Reza,Supervised by,Nematbakhsh
+Reza,Marital Status,Bachelor
+Reza,Student at,IUT
+Reza,Knows,Nematbakhsh
+Reza,Knows,Nima
+Reza,Knows,Navid
+Reza,Degree,M.Sc.
+Navid,Supervised by,Palhang
+Navid,Marital Status,Bachelor
+Navid,Student at,IUT
+Navid,Degree,M.Sc.
+Navid,Knows,Nematbakhsh
+Navid,Friend with,Reza
+Navid,Friend with,Nima
+Nima,Supervised by,Mirzaee
+Nima,Marital Status,Bachelor
+Nima,Student at,UI
+Nima,Friend with,Reza
+Nima,Knows,Nematbakhsh
+Nima,Degree,M.Sc.
+Ayoub,Supervised by,Saraee
+Ayoub,Marital Status,Married
+Ayoub,Student at,IUT
+Ayoub,Degree,Ph.D.
+Nematbakhsh,Degree,Ph.D.
+Palhang,Teach in,IUT
+Palhang,Marital Status,Married
+Palhang,Degree,Ph.D.
+Nematbakhsh,Friend with,Saraee
+Nematbakhsh,Marital Status,Married
+Nematbakhsh,Teach in,UI
+Nematbakhsh,Knows,Reza
+Nematbakhsh,Degree,Ph.D.
+Palhang,Teach in,IUT
+Palhang,Marital Status,Married
+Palhang,Degree,Ph.D.
+Reza,Marital Status,Bachelor
+Reza,Student at,IUT
+Reza,Knows,Nematbakhsh
+Reza,Knows,Nima
+Reza,Knows,Navid
+Reza,Degree,M.Sc.
+Navid,Supervised by,Palhang
+Navid,Marital Status,Bachelor
+Navid,Student at,IUT
+Navid,Degree,M.Sc.
+Navid,Knows,Nematbakhsh
+Reza,Marital Status,Bachelor
+Reza,Student at,IUT
+Reza,Knows,Nematbakhsh
+Reza,Knows,Nima
+Reza,Knows,Navid
+Reza,Degree,M.Sc.
+Navid,Supervised by,Palhang
+Navid,Marital Status,Bachelor
+Navid,Student at,IUT
+Navid,Degree,M.Sc.
+Navid,Knows,Nematbakhsh
+Reza,Marital Status,Bachelor
+Reza,Student at,IUT
+Reza,Knows,Nematbakhsh
+Reza,Knows,Nima
+Reza,Knows,Navid
+Reza,Degree,M.Sc.
+Navid,Supervised by,Palhang
+Navid,Marital Status,Bachelor
+Navid,Student at,IUT
+Navid,Degree,M.Sc.
+Navid,Knows,Nematbakhsh
+Reza,Marital Status,Bachelor
+Reza,Student at,IUT
+Reza,Knows,Nematbakhsh
+Reza,Knows,Nima
+Reza,Knows,Navid
+Reza,Degree,M.Sc.
+Navid,Supervised by,Palhang
+Navid,Marital Status,Bachelor
+Navid,Student at,IUT
+Navid,Degree,M.Sc.
+Navid,Knows,Nematbakhsh
+Reza,Marital Status,Bachelor
+Reza,Student at,IUT
+Reza,Knows,Nematbakhsh
+Reza,Knows,Nima
+Reza,Knows,Navid
+Reza,Degree,M.Sc.
+Navid,Supervised by,Palhang
+Navid,Marital Status,Bachelor
+Navid,Student at,IUT
+Navid,Degree,M.Sc.
+Navid,Knows,Nematbakhsh
+Reza,Marital Status,Bachelor
+Reza,Student at,IUT
+Reza,Knows,Nematbakhsh
+Reza,Knows,Nima
+Reza,Knows,Navid
+Reza,Degree,M.Sc.
+Navid,Supervised by,Palhang
+Navid,Marital Status,Bachelor
+Navid,Student at,IUT
+Navid,Degree,M.Sc.
+Navid,Knows,Nematbakhsh
+Saraee,Marital Status,Married
+Saraee,Teach in,IUT
+Saraee,Knows,Reza
+Saraee,Knows,Ayoub
+Saraee,Degree,Ph.D.
+Nematbakhsh,Friend with,Saraee
+Nematbakhsh,Marital Status,Married
+Nematbakhsh,Teach in,UI
+Nematbakhsh,Knows,Reza
