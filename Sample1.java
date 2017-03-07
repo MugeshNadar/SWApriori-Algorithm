@@ -5,16 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 
 public class Sample1 {
 
     private void solve() throws FileNotFoundException, IOException {
         BufferedReader br = new BufferedReader(new FileReader("sample_data_1.csv"));
-            
+
         // initializing variables
         String s = br.readLine();
         int minSup = 1;
@@ -60,7 +62,74 @@ public class Sample1 {
         for (Map.Entry x : freq.entrySet()) {
             object.insert(((Entry) x.getKey()).toString());
         }
+        HashSet<String> fis = generate2LArgeItemsets(object, minSup);
 
+        int l = 1;
+        do {
+            l++;
+            HashSet<String> candidates = new HashSet<>();
+
+            for (int i = 0; i < fis.size(); i++) {
+                for (int j = i + 1; j < fis.size(); j++) {
+                    
+                }
+            }
+
+        } while (false);
+
+    }
+
+    private HashSet<String> generate2LArgeItemsets(ObjectInfo object, int minSup) {
+
+        //Reading Content
+        for (ObjectNode a : object.root.childList) {
+            System.out.print(a.content + ": ");
+            for (ObjectNode b : a.childList) {
+                System.out.print(b.content + ": ");
+                for (ObjectNode c : b.childList) {
+                    System.out.println(c.content);
+                }
+            }
+        }
+
+        // Collection<Set<ObjectNode>> a= new ObjectNode(())
+        HashSet<String> lis = new HashSet<>();
+        for (int i = 0; i < object.root.childList.size(); i++) {
+            for (int j = i + 1; j < object.root.childList.size(); j++) {
+                ObjectNode ob1 = object.root.childList.get(i);
+                ObjectNode ob2 = object.root.childList.get(j);
+
+                System.out.println(ob1.content);
+                System.out.println(ob2.content);
+
+                for (int a = 0; a < ob1.childList.size(); a++) {
+                    for (int b = 0; b < ob2.childList.size(); b++) {
+                        ObjectNode r1 = ob1.childList.get(a);
+                        ObjectNode r2 = ob2.childList.get(b);
+
+                        System.out.println("\t" + r1.content);
+                        System.out.println("\t" + r2.content);
+
+                        int count = 0;
+                        for (ObjectNode s1 : r1.childList) {
+                            for (ObjectNode s2 : r2.childList) {
+                                if (s1.content.equals(s2.content)) {
+                                    count++;
+                                }
+                            }
+                        }
+                        System.out.println("\t\t" + count);
+                        if (count >= minSup) {
+                            lis.add(ob1.content + ":" + r1.content);
+                            lis.add(ob2.content + ":" + r2.content);
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.println(lis);
+        return lis;
     }
 
     class ObjectInfo {
@@ -74,7 +143,11 @@ public class Sample1 {
         public void insert(String entry) {
 
             ObjectNode current = root;
-            for (String ch : entry.split(":")) {
+            String s[] = entry.split(":");
+            String p = s[0];
+            s[0] = s[2];
+            s[2] = p;
+            for (String ch : s) {
                 ObjectNode child = current.subNode(ch);
                 if (child != null) {
                     current = child;
@@ -174,3 +247,40 @@ public class Sample1 {
         (new Sample1()).solve();
     }
 }
+
+/*
+        for (ObjectNode a : object.root.childList) {
+            System.out.println(a.content + ": ");
+
+            for (int i = 0; i < a.childList.size(); i++) {
+                for (int j = i + 1; j < a.childList.size(); j++) {
+                    HashSet<String> p = new HashSet<>();
+                    HashSet<String> q = new HashSet<>();
+                    System.out.print(a.childList.get(i).content+","+a.childList.get(j).content+" : ");
+                    for(ObjectNode x:a.childList.get(i).childList){
+                        p.add(x.content);
+                    }
+                    for(ObjectNode x:a.childList.get(j).childList){
+                        q.add(x.content);
+                    }
+                    p.retainAll(q);
+                    System.out.println(p.size());
+                }
+            }
+            /*
+            for (ObjectNode b : a.childList) {
+                System.out.print(b.content + ": ");
+                int count = 0;
+                // comparing all pairs of subjects
+               /* for (int i = 0; i < b.childList.size(); i++) {
+                    for (int j = i + 1; j < b.childList.size(); j++) {
+                        if (b.childList.get(i).content.equals(b.childList.get(j).content)) {
+                            count++;
+                        }
+                    }
+                    
+                }
+                
+                System.out.println(count);
+            }*
+        }*/
