@@ -62,24 +62,62 @@ public class Sample1 {
         for (Map.Entry x : freq.entrySet()) {
             object.insert(((Entry) x.getKey()).toString());
         }
-        HashSet<String> fis = generate2LArgeItemsets(object, minSup);
+        HashSet<Item> tis = generate2LArgeItemsets(object, minSup);
 
+        ArrayList<HashSet<Item>> fis = new ArrayList<>();
+        for (Item i : tis) {
+            HashSet<Item> t = (new HashSet<Item>());
+            t.add(i);
+            fis.add(t);
+        }
+
+        HashSet<HashSet<Item>> allfis = new HashSet<>(fis);
+
+        System.out.println(fis);
         int l = 1;
         do {
             l++;
-            HashSet<String> candidates = new HashSet<>();
+            ArrayList<HashSet<Item>> candidates = new ArrayList<>();
 
             for (int i = 0; i < fis.size(); i++) {
                 for (int j = i + 1; j < fis.size(); j++) {
-                    
+                    HashSet<Item> is1 = new HashSet<>(fis.get(i));
+                    HashSet<Item> is2 = new HashSet<>(fis.get(j));
+
+                    HashSet<Item> is3 = new HashSet<>();
+                    if (is1.size() <= l && is2.size() <= l) {
+                        for (Item x : is1) {
+                            is3.add(x);
+                        }
+                        for (Item x : is2) {
+                            is3.add(x);
+                        }
+                    }
+                    candidates.add(new HashSet<>(is3));
+                }
+            }
+            System.out.println(candidates);
+
+            fis = null;
+            for (HashSet<Item> x : candidates) {
+
+                if (Support(x) > minSup && true) {// fill in the condition appropriately  instead of just true
+                    fis.add(new HashSet<>(x));
                 }
             }
 
-        } while (false);
+            for (HashSet<Item> x : fis) {
+                if (!allfis.contains(x)) {
+                    allfis.add(x);
+                }
+            }
 
+        } while (fis.size() > 0);
+
+        // rules = generateRules(parameter1, parameter2);
     }
 
-    private HashSet<String> generate2LArgeItemsets(ObjectInfo object, int minSup) {
+    private HashSet<Item> generate2LArgeItemsets(ObjectInfo object, int minSup) {
 
         //Reading Content
         for (ObjectNode a : object.root.childList) {
@@ -93,7 +131,7 @@ public class Sample1 {
         }
 
         // Collection<Set<ObjectNode>> a= new ObjectNode(())
-        HashSet<String> lis = new HashSet<>();
+        HashSet<Item> lis = new HashSet<>();
         for (int i = 0; i < object.root.childList.size(); i++) {
             for (int j = i + 1; j < object.root.childList.size(); j++) {
                 ObjectNode ob1 = object.root.childList.get(i);
@@ -120,8 +158,8 @@ public class Sample1 {
                         }
                         System.out.println("\t\t" + count);
                         if (count >= minSup) {
-                            lis.add(ob1.content + ":" + r1.content);
-                            lis.add(ob2.content + ":" + r2.content);
+                            lis.add(new Item(ob1.content, r1.content));
+                            lis.add(new Item(ob2.content, r2.content));
                         }
                     }
                 }
@@ -130,6 +168,52 @@ public class Sample1 {
 
         System.out.println(lis);
         return lis;
+    }
+
+    private int Support(HashSet<Item> x) {
+        return 3;
+    }
+
+    class Item {
+
+        String object, predicate;
+
+        public Item() {
+            object = "";
+            predicate = "";
+        }
+
+        public Item(Item i) {
+            object = i.object;
+            predicate = i.predicate;
+        }
+
+        public Item(String object, String predicate) {
+            this.object = object;
+            this.predicate = predicate;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+
+            if (obj instanceof Item) {
+                if (this.object.equals(((Item) obj).object) && this.predicate.equals(((Item) obj).predicate)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            return object + ":" + predicate;
+        }
+
+        @Override
+        public int hashCode() {
+            return (object + ":" + predicate).hashCode(); //To change body of generated methods, choose Tools | Templates.
+        }
+
     }
 
     class ObjectInfo {
